@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Game-Eaters | Sobre</title>
+<title>Game-Eaters | Portal Completo</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -24,68 +24,210 @@
         background-size: cover;
         background-attachment: fixed;
         background-position: center;
-        transition: background-image 0.5s ease-in-out;
+        transition: background-image 1s ease-in-out;
     }
     .pixel-font { font-family: 'Press Start 2P', cursive; }
     .text-secondary { color: var(--secondary); }
-    .navbar {
-        background-color: rgba(0,0,0,0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 2px solid var(--primary);
+    .btn-primary {
+        background: var(--primary);
+        border: none;
+        transition: all 0.3s;
+    }
+    .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255,77,0,0.4);
+    }
+    .card {
+        background: rgba(30, 30, 30, 0.8);
+        border: 1px solid rgba(255, 77, 0, 0.3);
+        transition: all 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255,77,0,0.2); border-color: var(--primary);}
+    .grid-lines {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(rgba(255,77,0,0.1) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,77,0,0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        z-index: -1;
     }
     .glow { text-shadow: 0 0 10px var(--primary); }
+    #register-modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:50;}
 </style>
 </head>
 <body>
+<div class="grid-lines"></div>
 
 <!-- Navbar -->
-<nav class="navbar sticky top-0 z-50 py-4">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="index.html" class="text-2xl font-bold pixel-font glow flex items-center">
-            <img src="https://via.placeholder.com/40" alt="Logo" class="w-8 h-8 mr-2">
-            <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
-        </a>
-        <div class="flex space-x-6">
-            <a href="index.html" class="text-white hover:text-primary transition">HOME</a>
-            <a href="#" class="text-white hover:text-primary transition">MODS</a>
-            <a href="#" class="text-white hover:text-primary transition">CHEATS</a>
-            <a href="sobre.html" class="text-white hover:text-primary transition">SOBRE</a>
-        </div>
+<nav class="navbar sticky top-0 z-50 py-4 bg-black bg-opacity-80 backdrop-blur-md border-b border-gray-800">
+  <div class="container mx-auto px-4 flex justify-between items-center">
+    <a href="#hero" class="text-2xl font-bold pixel-font text-primary flex items-center">
+      <img src="https://via.placeholder.com/40" alt="Logo" class="w-8 h-8 mr-2">
+      <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
+    </a>
+    <div class="flex space-x-4 items-center">
+      <button class="btn-primary px-6 py-2 rounded-full font-bold" onclick="openRegister()">
+        <i class="fas fa-user-plus mr-2"></i> REGISTRAR-SE
+      </button>
+      <button class="md:hidden text-white text-2xl" id="btn-mobile-menu"><i class="fas fa-bars"></i></button>
     </div>
+  </div>
 </nav>
 
-<!-- Sobre Section -->
-<section class="py-20 px-4">
-    <div class="container mx-auto max-w-4xl bg-black bg-opacity-70 p-8 rounded-xl shadow-lg">
-        <h1 class="text-4xl font-bold mb-6 pixel-font text-center glow">Sobre o Game-Eaters</h1>
-        <p class="text-lg mb-6">
-            Olá! Eu sou <strong>Rodolfo Cardoso (WOLFFZ)</strong>, fundador do Game-Eaters. Criei este site com o objetivo de aprender sobre <strong>modding</strong> e compartilhar meus conhecimentos com a comunidade gamer.
-        </p>
-        <p class="text-lg mb-6">
-            O Game-Eaters foi desenvolvido para ajudar toda a comunidade de jogos oferecendo <strong>dicas, tutoriais e mods</strong>, de maneira organizada e fácil de acessar. Aqui, qualquer jogador pode encontrar conteúdo de qualidade para melhorar sua experiência nos jogos.
-        </p>
-        <p class="text-lg">
-            Minha missão é criar um espaço colaborativo, onde aprendemos juntos, testamos novas ideias e ajudamos outros gamers a aproveitar ao máximo seus jogos favoritos.
-        </p>
+<!-- Hero Section -->
+<section id="hero" class="relative py-20 text-center">
+  <div class="container mx-auto px-4">
+    <h1 class="text-5xl md:text-7xl font-bold mb-6 pixel-font glow">
+      <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
+    </h1>
+    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10">
+      Experimente uma nova maneira de navegar pelo Game-Eaters com este design futurista e gamer!
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <button class="btn-primary px-8 py-3 rounded-full font-bold text-lg">EXPLORAR MODS</button>
+      <button class="px-8 py-3 rounded-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary hover:text-dark transition">COMO USAR</button>
     </div>
+  </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-12 bg-black bg-opacity-80 border-t border-gray-800 mt-20">
-    <div class="container mx-auto px-4 text-center text-gray-400">
-        <p>&copy; 2023 Game-Eaters. Todos os direitos reservados.</p>
+<!-- Categorias -->
+<section class="py-16 px-4">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="text-4xl font-bold text-center mb-12 pixel-font glow">CATEGORIAS</h2>
+    <div class="grid md:grid-cols-4 gap-6">
+      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
+        <i class="fas fa-magic text-4xl text-primary mb-3"></i>
+        <h3 class="font-bold text-xl">Mods</h3>
+      </a>
+      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
+        <i class="fas fa-bug text-4xl text-primary mb-3"></i>
+        <h3 class="font-bold text-xl">Cheats</h3>
+      </a>
+      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
+        <i class="fas fa-book text-4xl text-primary mb-3"></i>
+        <h3 class="font-bold text-xl">Tutoriais</h3>
+      </a>
+      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
+        <i class="fas fa-palette text-4xl text-primary mb-3"></i>
+        <h3 class="font-bold text-xl">Skins</h3>
+      </a>
     </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-16 pixel-font">RECURSOS PRINCIPAIS</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="card p-6 rounded-lg text-center">
+        <div class="text-primary text-4xl mb-4"><i class="fas fa-bolt"></i></div>
+        <h3 class="text-2xl font-bold mb-3">CARREGAMENTO RÁPIDO</h3>
+        <p class="text-gray-400">Nova arquitetura que torna o site até 3x mais rápido que a versão anterior.</p>
+      </div>
+      <div class="card p-6 rounded-lg text-center">
+        <div class="text-primary text-4xl mb-4"><i class="fas fa-gamepad"></i></div>
+        <h3 class="text-2xl font-bold mb-3">INTERFACE GAMER</h3>
+        <p class="text-gray-400">Design inspirado em consoles modernos com efeitos visuais impressionantes.</p>
+      </div>
+      <div class="card p-6 rounded-lg text-center">
+        <div class="text-primary text-4xl mb-4"><i class="fas fa-mobile-alt"></i></div>
+        <h3 class="text-2xl font-bold mb-3">RESPONSIVO</h3>
+        <p class="text-gray-400">Totalmente adaptado para mobile com controles otimizados para touch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showcase de Mods -->
+<section class="py-20 bg-black bg-opacity-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-10 pixel-font">MODS EM <span class="text-primary">DESTAQUE</span></h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="card p-4 rounded-lg">
+        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+        <h4 class="font-bold">Super Graphics</h4>
+        <div class="flex items-center text-yellow-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          <span class="text-gray-400 ml-2">(124)</span>
+        </div>
+      </div>
+      <div class="card p-4 rounded-lg">
+        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+        <h4 class="font-bold">Unlimited Items</h4>
+        <div class="flex items-center text-yellow-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+          <span class="text-gray-400 ml-2">(87)</span>
+        </div>
+      </div>
+      <div class="card p-4 rounded-lg">
+        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+        <h4 class="font-bold">Character Skins</h4>
+        <div class="flex items-center text-yellow-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <span class="text-gray-400 ml-2">(256)</span>
+        </div>
+      </div>
+      <div class="card p-4 rounded-lg">
+        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+        <h4 class="font-bold">Game Overhaul</h4>
+        <div class="flex items-center text-yellow-400 text-sm">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          <span class="text-gray-400 ml-2">(192)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Registro -->
+<div id="register-modal" class="flex">
+  <form id="register-form" class="flex flex-col gap-4 bg-black bg-opacity-70 p-8 rounded-xl w-full max-w-md mx-auto shadow-lg">
+    <h2 class="text-3xl font-bold text-center pixel-font mb-4">Criar Conta</h2>
+    <input type="text" name="username" placeholder="Nome de usuário" required class="p-3 rounded bg-gray-800 text-white">
+    <input type="email" name="email" placeholder="Email" required class="p-3 rounded bg-gray-800 text-white">
+    <input type="password" name="password" placeholder="Senha" required class="p-3 rounded bg-gray-800 text-white">
+    <input type="password" name="confirm-password" placeholder="Confirmar senha" required class="p-3 rounded bg-gray-800 text-white">
+    <button type="submit" class="btn-primary px-6 py-3 rounded-full font-bold">Registrar</button>
+    <button type="button" class="mt-2 text-gray-400 hover:text-primary" onclick="closeRegister()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Footer -->
+<footer class="py-12 bg-black bg-opacity-80 border-t border-gray-800 mt-20 text-center text-gray-400">
+  &copy; 2023 Game-Eaters. Todos os direitos reservados.
 </footer>
 
 <script>
-    // Background dinâmico
-    const backgrounds = [
-        'https://wallpapers.com/images/hd/spider-man-4k-2018-game-6x7j9x2zq8q0q1j0.jpg',
-        'https://wallpapers.com/images/hd/assassins-creed-odyssey-4k-6x7j9x2zq8q0q1j0.jpg',
-        'https://wallpapers.com/images/hd/cyberpunk-2077-4k-6x7j9x2zq8q0q1j0.jpg'
-    ];
-    document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random()*backgrounds.length)]})`;
-</script>
+  // Background slide
+  const bgImages = [
+    'https://wallpapers.com/images/hd/spider-man-4k-2018-game-6x7j9x2zq8q0q1j0.jpg',
+    'https://wallpapers.com/images/hd/assassins-creed-odyssey-4k-6x7j9x2zq8q0q1j0.jpg',
+    'https://wallpapers.com/images/hd/cyberpunk-2077-4k-6x7j9x2zq8q0q1j0.jpg',
+    'https://wallpapers.com/images/hd/witcher-3-4k-6x7j9x2zq8q0q1j0.jpg'
+  ];
+  let currentBg = 0;
+  function changeBackground() {
+    currentBg = (currentBg + 1) % bgImages.length;
+    document.body.style.backgroundImage = `url(${bgImages[currentBg]})`;
+  }
+  document.body.style.backgroundImage = `url(${bgImages[0]})`;
+  setInterval(changeBackground, 8000);
 
+  // Modal registro
+  const modal = document.getElementById('register-modal');
+  function openRegister(){ modal.style.display='flex'; }
+  function closeRegister(){ modal.style.display='none'; }
+
+  document.getElementById('register-form').addEventListener('submit', e=>{
+    e.preventDefault();
+    const pwd=e.target.password.value;
+    const confirm=e.target['confirm-password'].value;
+    if(pwd!==confirm){ alert('Senhas não coincidem!'); return; }
+    alert(`Usuário "${e.target.username.value}" registrado!`);
+    closeRegister();
+  });
+</script>
 </body>
 </html>
