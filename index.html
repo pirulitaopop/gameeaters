@@ -22,8 +22,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-size: cover;
-  background-attachment: fixed;
   background-position: center;
+  background-attachment: fixed;
   transition: background-image 1s ease-in-out;
 }
 .pixel-font { font-family: 'Press Start 2P', cursive; }
@@ -39,7 +39,7 @@ body {
 }
 .card {
   background: rgba(30, 30, 30, 0.8);
-  border: 1px solid rgba(255, 77, 0, 0.3);
+  border: 1px solid rgba(255,77,0,0.3);
   transition: all 0.3s;
 }
 .card:hover {
@@ -59,7 +59,8 @@ body {
 .glow { text-shadow: 0 0 10px var(--primary); }
 #register-modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:50;}
 ul li a { display: block; }
-#news-carousel a { display:block; margin-bottom:0.5rem; font-weight:bold; }
+#news-carousel a { display:block; margin-bottom:0.5rem; font-weight:bold; color:white; text-decoration:none; }
+#news-carousel a:hover { color: var(--primary); }
 </style>
 </head>
 <body>
@@ -89,7 +90,18 @@ ul li a { display: block; }
           <li class="px-4 py-2 hover:bg-primary"><a href="#">Puzzle</a></li>
         </ul>
       </li>
-      <li><a href="#">Mods</a></li>
+      <li class="relative group cursor-pointer">
+        Mods
+        <ul class="absolute left-0 mt-2 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-all w-64 p-2">
+          <!-- Mods Catalogue Grid -->
+          <div class="grid grid-cols-2 gap-2">
+            <div class="card p-2"><img src="https://via.placeholder.com/150x80?text=GTA+V" class="w-full h-16 object-cover rounded"><span class="text-sm text-white">GTA V Mods</span></div>
+            <div class="card p-2"><img src="https://via.placeholder.com/150x80?text=Skyrim" class="w-full h-16 object-cover rounded"><span class="text-sm text-white">Skyrim Mods</span></div>
+            <div class="card p-2"><img src="https://via.placeholder.com/150x80?text=Minecraft" class="w-full h-16 object-cover rounded"><span class="text-sm text-white">Minecraft Mods</span></div>
+            <div class="card p-2"><img src="https://via.placeholder.com/150x80?text=Cyberpunk+2077" class="w-full h-16 object-cover rounded"><span class="text-sm text-white">Cyberpunk Mods</span></div>
+          </div>
+        </ul>
+      </li>
       <li><a href="#">Cheats</a></li>
       <li><a href="#">Tutoriais</a></li>
       <li><a href="#sobre">Sobre</a></li>
@@ -150,49 +162,41 @@ ul li a { display: block; }
 <!-- Catálogo de Mods -->
 <section class="py-20 bg-black bg-opacity-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-10 pixel-font text-center">CATÁLOGO DE MODS</h2>
+    <h2 class="text-4xl font-bold mb-10 pixel-font text-center text-white">CATÁLOGO DE MODS</h2>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Mod cards com imagens reais de mods -->
       <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Minecraft+Mod" alt="Minecraft Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Super Builds</h4>
+        <img src="https://www.adrenaline.com.br/assets/uploads/2020/07/minecraft-mod.jpg" alt="Minecraft Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg text-white">Super Builds</h4>
         <p class="text-gray-400 text-sm">Adicione construções épicas e ferramentas extras.</p>
       </div>
       <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=GTA+V+Mod" alt="GTA V Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Ultimate Cars</h4>
+        <img src="https://www.adrenaline.com.br/assets/uploads/2020/07/gta5-mod.jpg" alt="GTA V Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg text-white">Ultimate Cars</h4>
         <p class="text-gray-400 text-sm">Novos carros, gráficos aprimorados e diversão sem limites.</p>
       </div>
       <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Skyrim+Mod" alt="Skyrim Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Dragon Overhaul</h4>
-        <p class="text-gray-400 text-sm">Melhore as batalhas com dragões e novas quests.</p>
+        <img src="https://www.adrenaline.com.br/assets/uploads/2020/07/skyrim-mod.jpg" alt="Skyrim Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg text-white">Dragon Overhaul</h4>
+        <p class="text-gray-400 text-sm">Dragões mais fortes e novas missões épicas.</p>
       </div>
       <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Cyberpunk+2077+Mod" alt="Cyberpunk 2077 Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Night City Expansion</h4>
+        <img src="https://www.adrenaline.com.br/assets/uploads/2020/07/cyberpunk-mod.jpg" alt="Cyberpunk Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg text-white">Night City Expansion</h4>
         <p class="text-gray-400 text-sm">Novas áreas, carros e roupas futuristas.</p>
       </div>
-      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Assassins+Creed+Mod" alt="Assassins Creed Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Historical Weapons</h4>
-        <p class="text-gray-400 text-sm">Novas armas e armaduras de época para batalhas mais épicas.</p>
-      </div>
-      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Spider-Man+Mod" alt="Spider-Man Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Web Swing Enhancer</h4>
-        <p class="text-gray-400 text-sm">Melhora a mecânica de balanço e movimentos acrobáticos.</p>
-      </div>
-      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=The+Witcher+3+Mod" alt="The Witcher 3 Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Monster Expansion</h4>
-        <p class="text-gray-400 text-sm">Mais monstros, quests e loot para Geralt explorar.</p>
-      </div>
-      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
-        <img src="https://via.placeholder.com/300x200?text=Fallout+4+Mod" alt="Fallout 4 Mod" class="w-full h-40 object-cover rounded mb-3">
-        <h4 class="font-bold text-lg">Settlement Overhaul</h4>
-        <p class="text-gray-400 text-sm">Construa e personalize assentamentos incríveis.</p>
-      </div>
     </div>
+  </div>
+</section>
+
+<!-- Sobre -->
+<section id="sobre" class="py-20 bg-gray-900 bg-opacity-80 text-center">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold mb-6 pixel-font text-white">SOBRE O SITE</h2>
+    <p class="text-gray-400 max-w-2xl mx-auto mb-4">
+      Olá, eu sou <strong>Rodolfo Cardoso (WOLFFZ)</strong> e fundei o Game-Eaters para aprender sobre <strong>modding</strong> e ensinar o que sei.
+      Este site visa ajudar toda a comunidade com dicas de games, mods e novidades do mundo gamer!
+    </p>
   </div>
 </section>
 
@@ -214,51 +218,55 @@ ul li a { display: block; }
   &copy; 2025 Game-Eaters. Todos os direitos reservados.
 </footer>
 
-<!-- Scripts -->
 <script>
   // Background slide
   const bgImages = [
-    'https://via.placeholder.com/1920x1080?text=Assassins+Creed',
-    'https://via.placeholder.com/1920x1080?text=Spider-Man',
-    'https://via.placeholder.com/1920x1080?text=Cyberpunk+2077',
-    'https://via.placeholder.com/1920x1080?text=The+Witcher+3',
-    'https://via.placeholder.com/1920x1080?text=GTA+V'
+    'https://wallpapers.com/images/hd/spider-man-4k-2018-game-6x7j9x2zq8q0q1j0.jpg',
+    'https://wallpapers.com/images/hd/cyberpunk-2077-wallpaper-4k-8x2j1zq8q0.jpg',
+    'https://wallpapers.com/images/hd/assassins-creed-valhalla-4k-3x9k2zq0.jpg',
+    'https://wallpapers.com/images/hd/the-witcher-3-4k-6x7k9zq0.jpg'
   ];
-  let currentBg = 0;
-  function changeBackground() {
-    currentBg = (currentBg + 1) % bgImages.length;
-    document.body.style.backgroundImage = `url(${bgImages[currentBg]})`;
-  }
-  document.body.style.backgroundImage = `url(${bgImages[0]})`;
-  setInterval(changeBackground, 8000);
+  let currentBg=0;
+  setInterval(()=> {
+    currentBg=(currentBg+1)%bgImages.length;
+    document.body.style.backgroundImage=`url(${bgImages[currentBg]})`;
+  },8000);
 
-  // Modal registro
-  const modal = document.getElementById('register-modal');
-  function openRegister(){ modal.style.display='flex'; }
-  function closeRegister(){ modal.style.display='none'; }
+  // Modal
+  const modal=document.getElementById('register-modal');
+  function openRegister(){modal.style.display='flex';}
+  function closeRegister(){modal.style.display='none';}
   document.getElementById('register-form').addEventListener('submit', e=>{
     e.preventDefault();
     const pwd=e.target.password.value;
     const confirm=e.target['confirm-password'].value;
-    if(pwd!==confirm){ alert('Senhas não coincidem!'); return; }
+    if(pwd!==confirm){alert('Senhas não coincidem!'); return;}
     alert(`Usuário "${e.target.username.value}" registrado!`);
     closeRegister();
   });
 
-  // Notícias RSS (IGN)
-  async function fetchNews() {
-    const rssUrl = 'https://www.ign.com/rss/games.xml';
-    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-    const data = await res.json();
-    const carousel = document.getElementById('news-carousel');
-    carousel.innerHTML = '';
-    data.items.slice(0,5).forEach(item => {
-      const newsItem = document.createElement('div');
-      newsItem.innerHTML = `<a href="${item.link}" target="_blank" class="hover:text-primary transition">${item.title}</a>`;
-      carousel.appendChild(newsItem);
-    });
+  // Notícias via RSS (IGN)
+  async function fetchNews(){
+    const rssUrl='https://www.ign.com/rss/games.xml';
+    try{
+      const res=await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+      const data=await res.json();
+      const carousel=document.getElementById('news-carousel');
+      carousel.innerHTML='';
+      data.items.slice(0,5).forEach(item=>{
+        const a=document.createElement('a');
+        a.href=item.link;
+        a.target="_blank";
+        a.textContent=item.title;
+        carousel.appendChild(a);
+      });
+    }catch(e){
+      document.getElementById('news-carousel').innerHTML='Não foi possível carregar notícias.';
+      console.error(e);
+    }
   }
   fetchNews();
 </script>
+
 </body>
 </html>
