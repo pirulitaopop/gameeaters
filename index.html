@@ -59,9 +59,11 @@ body {
 .glow { text-shadow: 0 0 10px var(--primary); }
 #register-modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:50;}
 ul li a { display: block; }
+#news-carousel a { display:block; margin-bottom:0.5rem; font-weight:bold; }
 </style>
 </head>
 <body>
+
 <div class="grid-lines"></div>
 
 <!-- Navbar -->
@@ -87,10 +89,7 @@ ul li a { display: block; }
           <li class="px-4 py-2 hover:bg-primary"><a href="#">Puzzle</a></li>
         </ul>
       </li>
-      <li class="relative group cursor-pointer">
-        Mods
-        <ul id="mods-catalog" class="absolute left-0 mt-2 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-all max-h-96 overflow-y-auto w-64"></ul>
-      </li>
+      <li><a href="#">Mods</a></li>
       <li><a href="#">Cheats</a></li>
       <li><a href="#">Tutoriais</a></li>
       <li><a href="#sobre">Sobre</a></li>
@@ -124,7 +123,7 @@ ul li a { display: block; }
   </div>
 </section>
 
-<!-- Features -->
+<!-- Features Section -->
 <section class="py-20">
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold text-center mb-16 pixel-font">RECURSOS PRINCIPAIS</h2>
@@ -148,26 +147,50 @@ ul li a { display: block; }
   </div>
 </section>
 
-<!-- Showcase de Mods -->
+<!-- Catálogo de Mods -->
 <section class="py-20 bg-black bg-opacity-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-10 pixel-font">MODS EM <span class="text-primary">DESTAQUE</span></h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="card p-4 rounded-lg">
-        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
-        <h4 class="font-bold">Super Graphics</h4>
+    <h2 class="text-4xl font-bold mb-10 pixel-font text-center">CATÁLOGO DE MODS</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Minecraft+Mod" alt="Minecraft Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Super Builds</h4>
+        <p class="text-gray-400 text-sm">Adicione construções épicas e ferramentas extras.</p>
       </div>
-      <div class="card p-4 rounded-lg">
-        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
-        <h4 class="font-bold">Unlimited Items</h4>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=GTA+V+Mod" alt="GTA V Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Ultimate Cars</h4>
+        <p class="text-gray-400 text-sm">Novos carros, gráficos aprimorados e diversão sem limites.</p>
       </div>
-      <div class="card p-4 rounded-lg">
-        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
-        <h4 class="font-bold">Character Skins</h4>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Skyrim+Mod" alt="Skyrim Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Dragon Overhaul</h4>
+        <p class="text-gray-400 text-sm">Melhore as batalhas com dragões e novas quests.</p>
       </div>
-      <div class="card p-4 rounded-lg">
-        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
-        <h4 class="font-bold">Game Overhaul</h4>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Cyberpunk+2077+Mod" alt="Cyberpunk 2077 Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Night City Expansion</h4>
+        <p class="text-gray-400 text-sm">Novas áreas, carros e roupas futuristas.</p>
+      </div>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Assassins+Creed+Mod" alt="Assassins Creed Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Historical Weapons</h4>
+        <p class="text-gray-400 text-sm">Novas armas e armaduras de época para batalhas mais épicas.</p>
+      </div>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Spider-Man+Mod" alt="Spider-Man Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Web Swing Enhancer</h4>
+        <p class="text-gray-400 text-sm">Melhora a mecânica de balanço e movimentos acrobáticos.</p>
+      </div>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=The+Witcher+3+Mod" alt="The Witcher 3 Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Monster Expansion</h4>
+        <p class="text-gray-400 text-sm">Mais monstros, quests e loot para Geralt explorar.</p>
+      </div>
+      <div class="card p-4 rounded-lg hover:scale-105 transition-transform">
+        <img src="https://via.placeholder.com/300x200?text=Fallout+4+Mod" alt="Fallout 4 Mod" class="w-full h-40 object-cover rounded mb-3">
+        <h4 class="font-bold text-lg">Settlement Overhaul</h4>
+        <p class="text-gray-400 text-sm">Construa e personalize assentamentos incríveis.</p>
       </div>
     </div>
   </div>
@@ -188,17 +211,18 @@ ul li a { display: block; }
 
 <!-- Footer -->
 <footer class="py-12 bg-black bg-opacity-80 border-t border-gray-800 mt-20 text-center text-gray-400">
-  &copy; 2023 Game-Eaters. Todos os direitos reservados.
+  &copy; 2025 Game-Eaters. Todos os direitos reservados.
 </footer>
 
 <!-- Scripts -->
 <script>
   // Background slide
   const bgImages = [
-    'https://wallpapers.com/images/hd/spider-man-4k-2018-game-6x7j9x2zq8q0q1j0.jpg',
-    'https://wallpapers.com/images/hd/assassins-creed-odyssey-4k-6x7j9x2zq8q0q1j0.jpg',
-    'https://wallpapers.com/images/hd/cyberpunk-2077-4k-6x7j9x2zq8q0q1j0.jpg',
-    'https://wallpapers.com/images/hd/witcher-3-4k-6x7j9x2zq8q0q1j0.jpg'
+    'https://via.placeholder.com/1920x1080?text=Assassins+Creed',
+    'https://via.placeholder.com/1920x1080?text=Spider-Man',
+    'https://via.placeholder.com/1920x1080?text=Cyberpunk+2077',
+    'https://via.placeholder.com/1920x1080?text=The+Witcher+3',
+    'https://via.placeholder.com/1920x1080?text=GTA+V'
   ];
   let currentBg = 0;
   function changeBackground() {
@@ -221,50 +245,20 @@ ul li a { display: block; }
     closeRegister();
   });
 
-  // Carrossel de notícias
-  const news = [
-    { title: "Assassin's Creed Mirage é lançado com novidades incríveis!", url: "#" },
-    { title: "Marvel's Spider-Man 2 bate recordes de vendas no mundo todo!", url: "#" },
-    { title: "Cyberpunk 2077 recebe atualização gratuita com novos mods.", url: "#" },
-    { title: "The Witcher 3 Remastered anunciado para consoles next-gen.", url: "#" }
-  ];
-  let currentNews = 0;
-  const newsElement = document.getElementById('news-carousel');
-  function showNews() {
-    const item = news[currentNews];
-    newsElement.innerHTML = `<a href="${item.url}" class="hover:text-primary transition">${item.title}</a>`;
-    currentNews = (currentNews + 1) % news.length;
+  // Notícias RSS (IGN)
+  async function fetchNews() {
+    const rssUrl = 'https://www.ign.com/rss/games.xml';
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+    const data = await res.json();
+    const carousel = document.getElementById('news-carousel');
+    carousel.innerHTML = '';
+    data.items.slice(0,5).forEach(item => {
+      const newsItem = document.createElement('div');
+      newsItem.innerHTML = `<a href="${item.link}" target="_blank" class="hover:text-primary transition">${item.title}</a>`;
+      carousel.appendChild(newsItem);
+    });
   }
-  showNews();
-  setInterval(showNews, 5000);
-
-  // IGDB Mods Catalog (você precisa da sua própria chave)
-  async function loadModsCatalog(){
-    const modsCatalog=document.getElementById('mods-catalog');
-    // Substitua CLIENT_ID e TOKEN pelos seus da IGDB
-    const CLIENT_ID = 'SEU_CLIENT_ID';
-    const TOKEN = 'SEU_ACCESS_TOKEN';
-    try{
-      const response = await fetch('https://api.igdb.com/v4/games',{
-        method:'POST',
-        headers:{
-          'Client-ID':CLIENT_ID,
-          'Authorization':`Bearer ${TOKEN}`,
-          'Accept':'application/json'
-        },
-        body:'fields name,cover.url; where cover!=null; limit 20;'
-      });
-      const games = await response.json();
-      modsCatalog.innerHTML='';
-      games.forEach(game=>{
-        const li=document.createElement('li');
-        li.className="px-4 py-2 hover:bg-primary flex items-center gap-2";
-        li.innerHTML=`<img src="${game.cover.url.replace('t_thumb','t_cover_small')}" alt="${game.name}" class="w-10 h-10 rounded"><span>${game.name}</span>`;
-        modsCatalog.appendChild(li);
-      });
-    }catch(err){ console.error(err); modsCatalog.innerHTML='<li class="px-4 py-2">Erro ao carregar catálogo</li>'; }
-  }
-  loadModsCatalog();
+  fetchNews();
 </script>
 </body>
 </html>
