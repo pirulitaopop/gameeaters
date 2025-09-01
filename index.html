@@ -8,52 +8,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-    :root {
-        --primary: #89CFF0;
-        --secondary: #00A2FF;
-        --dark: #121212;
-        --light: #F5F5F5;
-    }
-    body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: var(--dark);
-        color: var(--light);
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        background-size: cover;
-        background-attachment: fixed;
-        background-position: center;
-        transition: background-image 1s ease-in-out;
-    }
-    .pixel-font { font-family: 'Press Start 2P', cursive; }
-    .text-secondary { color: var(--secondary); }
-    .btn-primary {
-        background: var(--primary);
-        border: none;
-        transition: all 0.3s;
-    }
-    .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(255,77,0,0.4);
-    }
-    .card {
-        background: rgba(30, 30, 30, 0.8);
-        border: 1px solid rgba(255, 77, 0, 0.3);
-        transition: all 0.3s;
-    }
-    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255,77,0,0.2); border-color: var(--primary);}
-    .grid-lines {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-image: linear-gradient(rgba(255,77,0,0.1) 1px, transparent 1px),
-                          linear-gradient(90deg, rgba(255,77,0,0.1) 1px, transparent 1px);
-        background-size: 20px 20px;
-        z-index: -1;
-    }
-    .glow { text-shadow: 0 0 10px var(--primary); }
-    #register-modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:50;}
+:root {
+  --primary: #89CFF0;
+  --secondary: #00A2FF;
+  --dark: #121212;
+  --light: #F5F5F5;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--dark);
+  color: var(--light);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+}
+.pixel-font { font-family: 'Press Start 2P', cursive; }
+.text-secondary { color: var(--secondary); }
+.btn-primary {
+  background: var(--primary);
+  border: none;
+  transition: all 0.3s;
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255,77,0,0.4);
+}
+.card {
+  background: rgba(30, 30, 30, 0.8);
+  border: 1px solid rgba(255, 77, 0, 0.3);
+  transition: all 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255,77,0,0.2);
+  border-color: var(--primary);
+}
+.grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255,77,0,0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,77,0,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+}
+.glow { text-shadow: 0 0 10px var(--primary); }
+#register-modal { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); justify-content:center; align-items:center; z-index:50;}
+ul li a { display: block; }
 </style>
 </head>
 <body>
@@ -66,6 +71,31 @@
       <img src="https://via.placeholder.com/40" alt="Logo" class="w-8 h-8 mr-2">
       <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
     </a>
+
+    <!-- Menu -->
+    <ul class="hidden md:flex space-x-6 items-center text-white font-bold">
+      <li class="relative group cursor-pointer">
+        Categorias
+        <ul class="absolute left-0 mt-2 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-all">
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Ação</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Aventura</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Tiro</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">RPG</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Estratégia</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Indie</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Esportes</a></li>
+          <li class="px-4 py-2 hover:bg-primary"><a href="#">Puzzle</a></li>
+        </ul>
+      </li>
+      <li class="relative group cursor-pointer">
+        Mods
+        <ul id="mods-catalog" class="absolute left-0 mt-2 bg-black bg-opacity-90 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-all max-h-96 overflow-y-auto w-64"></ul>
+      </li>
+      <li><a href="#">Cheats</a></li>
+      <li><a href="#">Tutoriais</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+
     <div class="flex space-x-4 items-center">
       <button class="btn-primary px-6 py-2 rounded-full font-bold" onclick="openRegister()">
         <i class="fas fa-user-plus mr-2"></i> REGISTRAR-SE
@@ -81,37 +111,15 @@
     <h1 class="text-5xl md:text-7xl font-bold mb-6 pixel-font glow">
       <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
     </h1>
-    <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10">
-      Experimente uma nova maneira de navegar pelo Game-Eaters com este design futurista e gamer!
-    </p>
+
+    <!-- Carrossel de notícias -->
+    <div id="news-carousel" class="text-xl md:text-2xl max-w-2xl mx-auto mb-10 transition-all">
+      Carregando notícias...
+    </div>
+
     <div class="flex flex-wrap justify-center gap-4">
       <button class="btn-primary px-8 py-3 rounded-full font-bold text-lg">EXPLORAR MODS</button>
       <button class="px-8 py-3 rounded-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary hover:text-dark transition">COMO USAR</button>
-    </div>
-  </div>
-</section>
-
-<!-- Categorias -->
-<section class="py-16 px-4">
-  <div class="container mx-auto max-w-6xl">
-    <h2 class="text-4xl font-bold text-center mb-12 pixel-font glow">CATEGORIAS</h2>
-    <div class="grid md:grid-cols-4 gap-6">
-      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
-        <i class="fas fa-magic text-4xl text-primary mb-3"></i>
-        <h3 class="font-bold text-xl">Mods</h3>
-      </a>
-      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
-        <i class="fas fa-bug text-4xl text-primary mb-3"></i>
-        <h3 class="font-bold text-xl">Cheats</h3>
-      </a>
-      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
-        <i class="fas fa-book text-4xl text-primary mb-3"></i>
-        <h3 class="font-bold text-xl">Tutoriais</h3>
-      </a>
-      <a href="#" class="card p-6 rounded-lg text-center hover:scale-105 transition">
-        <i class="fas fa-palette text-4xl text-primary mb-3"></i>
-        <h3 class="font-bold text-xl">Skins</h3>
-      </a>
     </div>
   </div>
 </section>
@@ -148,34 +156,18 @@
       <div class="card p-4 rounded-lg">
         <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
         <h4 class="font-bold">Super Graphics</h4>
-        <div class="flex items-center text-yellow-400 text-sm">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          <span class="text-gray-400 ml-2">(124)</span>
-        </div>
       </div>
       <div class="card p-4 rounded-lg">
         <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
         <h4 class="font-bold">Unlimited Items</h4>
-        <div class="flex items-center text-yellow-400 text-sm">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          <span class="text-gray-400 ml-2">(87)</span>
-        </div>
       </div>
       <div class="card p-4 rounded-lg">
         <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
         <h4 class="font-bold">Character Skins</h4>
-        <div class="flex items-center text-yellow-400 text-sm">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          <span class="text-gray-400 ml-2">(256)</span>
-        </div>
       </div>
       <div class="card p-4 rounded-lg">
         <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
         <h4 class="font-bold">Game Overhaul</h4>
-        <div class="flex items-center text-yellow-400 text-sm">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          <span class="text-gray-400 ml-2">(192)</span>
-        </div>
       </div>
     </div>
   </div>
@@ -199,6 +191,7 @@
   &copy; 2023 Game-Eaters. Todos os direitos reservados.
 </footer>
 
+<!-- Scripts -->
 <script>
   // Background slide
   const bgImages = [
@@ -219,7 +212,6 @@
   const modal = document.getElementById('register-modal');
   function openRegister(){ modal.style.display='flex'; }
   function closeRegister(){ modal.style.display='none'; }
-
   document.getElementById('register-form').addEventListener('submit', e=>{
     e.preventDefault();
     const pwd=e.target.password.value;
@@ -228,6 +220,51 @@
     alert(`Usuário "${e.target.username.value}" registrado!`);
     closeRegister();
   });
+
+  // Carrossel de notícias
+  const news = [
+    { title: "Assassin's Creed Mirage é lançado com novidades incríveis!", url: "#" },
+    { title: "Marvel's Spider-Man 2 bate recordes de vendas no mundo todo!", url: "#" },
+    { title: "Cyberpunk 2077 recebe atualização gratuita com novos mods.", url: "#" },
+    { title: "The Witcher 3 Remastered anunciado para consoles next-gen.", url: "#" }
+  ];
+  let currentNews = 0;
+  const newsElement = document.getElementById('news-carousel');
+  function showNews() {
+    const item = news[currentNews];
+    newsElement.innerHTML = `<a href="${item.url}" class="hover:text-primary transition">${item.title}</a>`;
+    currentNews = (currentNews + 1) % news.length;
+  }
+  showNews();
+  setInterval(showNews, 5000);
+
+  // IGDB Mods Catalog (você precisa da sua própria chave)
+  async function loadModsCatalog(){
+    const modsCatalog=document.getElementById('mods-catalog');
+    // Substitua CLIENT_ID e TOKEN pelos seus da IGDB
+    const CLIENT_ID = 'SEU_CLIENT_ID';
+    const TOKEN = 'SEU_ACCESS_TOKEN';
+    try{
+      const response = await fetch('https://api.igdb.com/v4/games',{
+        method:'POST',
+        headers:{
+          'Client-ID':CLIENT_ID,
+          'Authorization':`Bearer ${TOKEN}`,
+          'Accept':'application/json'
+        },
+        body:'fields name,cover.url; where cover!=null; limit 20;'
+      });
+      const games = await response.json();
+      modsCatalog.innerHTML='';
+      games.forEach(game=>{
+        const li=document.createElement('li');
+        li.className="px-4 py-2 hover:bg-primary flex items-center gap-2";
+        li.innerHTML=`<img src="${game.cover.url.replace('t_thumb','t_cover_small')}" alt="${game.name}" class="w-10 h-10 rounded"><span>${game.name}</span>`;
+        modsCatalog.appendChild(li);
+      });
+    }catch(err){ console.error(err); modsCatalog.innerHTML='<li class="px-4 py-2">Erro ao carregar catálogo</li>'; }
+  }
+  loadModsCatalog();
 </script>
 </body>
 </html>
