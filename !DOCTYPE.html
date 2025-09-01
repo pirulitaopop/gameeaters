@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game-Eaters | Novo Formato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #89CFF0;
+            --secondary: #00A2FF;
+            --dark: #121212;
+            --light: #F5F5F5;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: url('https://wallpapers.com/images/hd/spider-man-4k-2018-game-6x7j9x2zq8q0q1j0.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+        }
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+        }
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.4);
+        }
+        .card {
+            background: rgba(30, 30, 30, 0.7);
+            border: 1px solid rgba(255, 77, 0, 0.3);
+            transition: all 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 77, 0, 0.2);
+            border-color: var(--primary);
+        }
+        .grid-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 77, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 77, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+        .glow {
+            text-shadow: 0 0 10px var(--primary);
+        }
+        .card {
+            background: rgba(30, 30, 30, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar sticky top-0 z-50 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pixel-font glow flex items-center">
+                <img src="https://via.placeholder.com/40" alt="Pacman Logo" class="w-8 h-8 mr-2">
+                <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-white hover:text-primary transition">HOME</a>
+                <a href="#" class="text-white hover:text-primary transition">MODS</a>
+                <a href="#" class="text-white hover:text-primary transition">CHEATS</a>
+                <a href="sobre.html" class="text-white hover:text-primary transition">SOBRE</a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <button class="btn-primary px-6 py-2 rounded-full font-bold">
+                    <i class="fas fa-sign-in-alt mr-2"></i> LOGIN
+                </button>
+                <button class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 pixel-font glow">
+                <span class="text-blue-300">GAME</span><span class="text-secondary">EATERS</span>
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-10">
+                Experimente uma nova maneira de navegar pelo Game-Eaters com este design futurista e gamer!
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="btn-primary px-8 py-3 rounded-full font-bold text-lg">
+                    EXPLORAR MODS
+                </button>
+                <button class="px-8 py-3 rounded-full font-bold text-lg border-2 border-primary text-primary hover:bg-primary hover:text-dark transition">
+                    COMO USAR
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16 pixel-font">RECURSOS PRINCIPAIS</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">CARREGAMENTO RÁPIDO</h3>
+                    <p class="text-gray-400">Nova arquitetura que torna o site até 3x mais rápido que a versão anterior.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">INTERFACE GAMER</h3>
+                    <p class="text-gray-400">Design inspirado em consoles modernos com efeitos visuais impressionantes.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="card p-6 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">RESPONSIVO</h3>
+                    <p class="text-gray-400">Totalmente adaptado para mobile com controles otimizados para touch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mod Showcase -->
+    <section class="py-20 bg-black bg-opacity-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-4xl font-bold mb-6 pixel-font">MODS EM <span class="text-primary">DESTAQUE</span></h2>
+                    <p class="text-xl mb-8">Navegue pelos melhores mods com nosso novo sistema de visualização em grade, com filtros inteligentes e sistema de avaliação aprimorado.</p>
+                    <button class="btn-primary px-8 py-3 rounded-full font-bold text-lg">
+                        VER TODOS OS MODS
+                    </button>
+                </div>
+                
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="card p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+                        <h4 class="font-bold">Super Graphics</h4>
+                        <div class="flex items-center text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-400 ml-2">(124)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+                        <h4 class="font-bold">Unlimited Items</h4>
+                        <div class="flex items-center text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-gray-400 ml-2">(87)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+                        <h4 class="font-bold">Character Skins</h4>
+                        <div class="flex items-center text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="text-gray-400 ml-2">(256)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card p-4 rounded-lg">
+                        <img src="https://via.placeholder.com/200" alt="Mod Preview" class="w-full h-32 object-cover mb-3 rounded">
+                        <h4 class="font-bold">Game Overhaul</h4>
+                        <div class="flex items-center text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-400 ml-2">(192)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black bg-opacity-80 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold pixel-font mb-4">
+                        <span class="text-primary">GAME</span><span class="text-secondary">EATERS</span>
+                    </h3>
+                    <p class="text-gray-400">O melhor portal de mods para jogos, com conteúdo exclusivo e atualizações constantes.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">LINKS</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">Mods</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">Tutoriais</a></li>
+                        <li><a href="sobre.html" class="text-gray-400 hover:text-primary transition">Sobre</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">SUPORTE</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">Contato</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">Termos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition">Privacidade</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">REDES SOCIAIS</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary text-2xl transition">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary text-2xl transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary text-2xl transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary text-2xl transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Game-Eaters. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
