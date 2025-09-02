@@ -3,243 +3,260 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameEaters</title>
+  <title>Game-Eaters</title>
   <style>
-    /* Reset */
-    * {margin:0; padding:0; box-sizing:border-box;}
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body, html { font-family: Arial, sans-serif; color: #fff; height: 100%; }
 
-    body, html {
-      font-family: 'Arial', sans-serif;
-      height:100%;
-      color:white;
-      overflow-x:hidden;
-    }
-
-    /* Background slideshow */
-    body {
-      background: black;
-    }
+    /* SLIDESHOW BACKGROUND */
     .slideshow {
       position: fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      z-index:-1;
-      overflow:hidden;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1; overflow: hidden;
     }
     .slideshow img {
-      position:absolute;
-      width:100%; height:100%;
-      object-fit:cover;
-      opacity:0;
-      animation: slideShow 24s infinite;
+      position: absolute;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
     }
-    .slideshow img:nth-child(1) {animation-delay:0s;}
-    .slideshow img:nth-child(2) {animation-delay:6s;}
-    .slideshow img:nth-child(3) {animation-delay:12s;}
-    .slideshow img:nth-child(4) {animation-delay:18s;}
-    @keyframes slideShow {
-      0% {opacity:0;}
-      10% {opacity:1;}
-      25% {opacity:1;}
-      35% {opacity:0;}
-      100% {opacity:0;}
-    }
+    .slideshow img.active { opacity: 1; }
 
-    /* Navbar */
+    /* NAVBAR */
     nav {
-      display:flex; justify-content:space-between; align-items:center;
-      padding:10px 30px;
-      background:rgba(0,0,0,0.8);
-      position:sticky; top:0; z-index:10;
+      background: rgba(0,0,0,0.8);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    nav .logo {
-      font-size:24px; font-weight:bold; color:#00aaff;
-    }
-    nav ul {
-      list-style:none; display:flex; gap:20px; align-items:center;
-    }
-    nav ul li {
-      position:relative;
-    }
-    nav ul li a {
-      color:white; text-decoration:none;
-    }
-    nav ul li:hover > ul {
-      display:block;
-    }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li { position: relative; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
+    nav ul li:hover > ul { display: block; }
     nav ul ul {
-      display:none; position:absolute; top:100%; left:0;
-      background:rgba(0,0,0,0.9); padding:10px; border-radius:8px;
-      min-width:150px;
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      background: rgba(0,0,0,0.9);
+      padding: 10px;
+      border-radius: 6px;
     }
-    nav ul ul li {
-      margin:5px 0;
+    nav ul ul li { margin: 5px 0; }
+
+    /* LAYOUT BLOG */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 20px auto;
+      gap: 20px;
     }
-    nav ul ul li a:hover {
-      color:#00aaff;
+    .posts {
+      flex: 3;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .post {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
+    }
+    .post img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .post h2 { margin-bottom: 10px; }
+    .sidebar {
+      flex: 1;
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .sidebar h3 { margin-bottom: 10px; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin: 8px 0; }
+
+    /* RODAPÉ */
+    footer {
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    footer h3 { margin-bottom: 15px; }
+    .noticias {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .noticia {
+      width: 250px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .noticia img {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 10px;
     }
 
-    .login-btn {
-      background:#00aaff; border:none; padding:8px 15px;
-      border-radius:6px; color:white; cursor:pointer;
-    }
-
-    /* Sections */
-    section {
-      padding:40px 20px;
-      text-align:center;
-      background:rgba(0,0,0,0.6);
-      margin:20px auto;
-      border-radius:12px;
-      width:90%;
-    }
-    h2 {margin-bottom:20px;}
-
-    /* News carousel */
-    .news-carousel {
-      display:flex; overflow-x:auto; gap:20px;
-      scroll-snap-type:x mandatory;
-    }
-    .news-item {
-      min-width:250px; background:#111; padding:15px; border-radius:8px;
-      scroll-snap-align:start;
-    }
-    .news-item img {
-      width:100%; border-radius:8px; margin-bottom:10px;
-    }
-
-    /* Mods grid */
-    .mods-grid {
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-    .mod-card {
-      background:#111; padding:15px; border-radius:8px;
-    }
-    .mod-card img {
-      width:100%; border-radius:8px; margin-bottom:10px;
-    }
-
-    /* Modal login */
+    /* MODAL */
     .modal {
-      display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-      background:rgba(0,0,0,0.8); justify-content:center; align-items:center;
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
     .modal-content {
-      background:#222; padding:20px; border-radius:10px; width:300px;
+      background: #111;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
     }
-    .modal-content h3 {margin-bottom:15px;}
     .modal-content input {
-      width:100%; padding:8px; margin:8px 0;
-      border:none; border-radius:6px;
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 6px;
     }
     .modal-content button {
-      width:100%; padding:10px; background:#00aaff;
-      border:none; border-radius:6px; color:white; cursor:pointer;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #ff3c00;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Slideshow -->
+  <!-- SLIDESHOW -->
   <div class="slideshow">
-    <img src="https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808" alt="">
-    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/271590/ss_ef74c1b0cf19cf1aa77e2eb07b3d85e11f703e0f.1920x1080.jpg" alt="">
-    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_41a39464d7c6f216a73ab6090f963a1ccb79b7a3.1920x1080.jpg" alt="">
-    <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/489830/ss_c6a4c6b4e833bd60ad01726bb3fe6e3aa8b0ca8a.1920x1080.jpg" alt="">
+    <img src="https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808" class="active">
+    <img src="https://www.cyberpunk.net/build/images/home12/cover-1920-bd460362.jpg">
+    <img src="https://images6.alphacoders.com/909/909641.jpg">
+    <img src="https://images2.alphacoders.com/128/1288050.jpg">
   </div>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <nav>
-    <div class="logo">🎮 GAMEEATERS</div>
+    <div class="logo">🎮 Game-Eaters</div>
     <ul>
+      <li><a href="#">Início</a></li>
       <li><a href="#">Games</a>
         <ul>
           <li><a href="#">Ação</a></li>
           <li><a href="#">Aventura</a></li>
-          <li><a href="#">Tiro</a></li>
           <li><a href="#">RPG</a></li>
+          <li><a href="#">Tiro</a></li>
           <li><a href="#">Corrida</a></li>
+          <li><a href="#">Estratégia</a></li>
           <li><a href="#">Terror</a></li>
-          <li><a href="#">Esporte</a></li>
           <li><a href="#">Indie</a></li>
         </ul>
       </li>
-      <li><a href="#">MODS</a>
+      <li><a href="#">Mods</a>
         <ul>
-          <li><a href="#mods">Catálogo</a></li>
-          <li><a href="#news">Notícias</a></li>
+          <li><a href="#">GTA V</a></li>
+          <li><a href="#">Skyrim</a></li>
+          <li><a href="#">Minecraft</a></li>
+          <li><a href="#">Cyberpunk 2077</a></li>
         </ul>
       </li>
+      <li><a href="#" onclick="openModal()">Registrar</a></li>
     </ul>
-    <button class="login-btn" onclick="openModal()">Login</button>
   </nav>
 
-  <!-- Notícias -->
-  <section id="news">
-    <h2>📰 Notícias Gamer</h2>
-    <div class="news-carousel">
-      <div class="news-item">
-        <img src="https://i.ytimg.com/vi/bt8wNQJaKAk/maxresdefault.jpg" alt="">
-        <h4>Novo Mod Realista para GTA V</h4>
+  <!-- CONTEÚDO -->
+  <div class="container">
+    <!-- POSTS -->
+    <div class="posts">
+      <div class="post">
+        <img src="https://images6.alphacoders.com/133/1330164.jpeg" alt="Post 1">
+        <h2>Novo Mod de GTA V</h2>
+        <p>Um mod incrível adiciona gráficos realistas e ray tracing no GTA V. Confira como instalar!</p>
       </div>
-      <div class="news-item">
-        <img src="https://cdn.mos.cms.futurecdn.net/7U7X4Zd9SmXxMuZnHOSy3k.jpg" alt="">
-        <h4>Cyberpunk 2077 ganha patch gráfico</h4>
-      </div>
-      <div class="news-item">
-        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202009/3014/vK5wCF6Lq8QyoVtctwgXxQ14.png" alt="">
-        <h4>Spider-Man recebe mod de traje clássico</h4>
+      <div class="post">
+        <img src="https://images2.alphacoders.com/131/1315649.jpeg" alt="Post 2">
+        <h2>Cyberpunk com visual renovado</h2>
+        <p>Mods que transformam a cidade em algo ainda mais imersivo. Veja detalhes!</p>
       </div>
     </div>
-  </section>
 
-  <!-- Mods -->
-  <section id="mods">
-    <h2>🔥 Mods em Destaque</h2>
-    <div class="mods-grid">
-      <div class="mod-card">
-        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202009/3014/vK5wCF6Lq8QyoVtctwgXxQ14.png" alt="">
-        <h4>Spider-Man Remastered</h4>
-        <p>Capturas incríveis do herói em Nova York.</p>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <h3>Categorias</h3>
+      <ul>
+        <li>Ação</li>
+        <li>Aventura</li>
+        <li>RPG</li>
+        <li>Tiro</li>
+        <li>Mods</li>
+        <li>Notícias</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <h3>📰 Notícias Gamer</h3>
+    <div class="noticias">
+      <div class="noticia">
+        <img src="https://images5.alphacoders.com/131/1318659.jpeg" alt="">
+        <p>Assassin's Creed Mirage ganha novo trailer.</p>
       </div>
-      <div class="mod-card">
-        <img src="https://i.ytimg.com/vi/1iT5k1dqLGQ/maxresdefault.jpg" alt="">
-        <h4>GTA V – NaturalVision</h4>
-        <p>Texturas realistas e gráficos incríveis.</p>
+      <div class="noticia">
+        <img src="https://images6.alphacoders.com/133/1330544.jpeg" alt="">
+        <p>Minecraft recebe expansão oficial com novos biomas.</p>
       </div>
-      <div class="mod-card">
-        <img src="https://cdn.mos.cms.futurecdn.net/7U7X4Zd9SmXxMuZnHOSy3k.jpg" alt="">
-        <h4>Cyberpunk 2077 – Ultra Graphics</h4>
-        <p>Nova vida em Night City.</p>
-      </div>
-      <div class="mod-card">
-        <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/489830/ss_c6a4c6b4e833bd60ad01726bb3fe6e3aa8b0ca8a.1920x1080.jpg" alt="">
-        <h4>Skyrim – ENB Real</h4>
-        <p>Gráficos lendários para Tamriel.</p>
+      <div class="noticia">
+        <img src="https://images2.alphacoders.com/128/1288050.jpg" alt="">
+        <p>Cyberpunk 2077: update traz melhorias gráficas.</p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- Modal login -->
-  <div class="modal" id="loginModal">
+  <!-- MODAL -->
+  <div class="modal" id="registerModal">
     <div class="modal-content">
-      <h3>Login</h3>
+      <h2>Registrar</h2>
       <input type="text" placeholder="Usuário">
+      <input type="email" placeholder="Email">
       <input type="password" placeholder="Senha">
-      <button>Entrar</button>
-      <p style="margin-top:10px; font-size:14px;">Ainda não tem conta? <a href="#">Registrar</a></p>
+      <button>Registrar</button>
     </div>
   </div>
 
   <script>
+    // SLIDESHOW
+    let slides = document.querySelectorAll(".slideshow img");
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 5000);
+
+    // MODAL
     function openModal() {
-      document.getElementById('loginModal').style.display = 'flex';
+      document.getElementById("registerModal").style.display = "flex";
     }
-    window.onclick = function(e) {
-      if (e.target.id === 'loginModal') {
-        document.getElementById('loginModal').style.display = 'none';
-      }
+    window.onclick = function(event) {
+      let modal = document.getElementById("registerModal");
+      if (event.target == modal) modal.style.display = "none";
     }
   </script>
 </body>
