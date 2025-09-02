@@ -5,259 +5,288 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game-Eaters</title>
   <style>
-    /* RESET */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { font-family: Arial, sans-serif; color: #fff; height: 100%; }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      background: #111;
+      line-height: 1.6;
+    }
 
-    /* SLIDESHOW BACKGROUND */
+    /* Slideshow Background */
     .slideshow {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -1; overflow: hidden;
+      z-index: -1;
+      overflow: hidden;
     }
     .slideshow img {
       position: absolute;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      animation: slideShow 24s infinite;
     }
-    .slideshow img.active { opacity: 1; }
+    .slideshow img:nth-child(1) { animation-delay: 0s; }
+    .slideshow img:nth-child(2) { animation-delay: 6s; }
+    .slideshow img:nth-child(3) { animation-delay: 12s; }
+    .slideshow img:nth-child(4) { animation-delay: 18s; }
 
-    /* NAVBAR */
+    @keyframes slideShow {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      25% { opacity: 1; }
+      35% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* Navbar */
     nav {
       background: rgba(0,0,0,0.8);
-      padding: 15px 30px;
+      padding: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    nav ul { list-style: none; display: flex; gap: 20px; }
-    nav ul li { position: relative; }
-    nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
-    nav ul li:hover > ul { display: block; }
-    nav ul ul {
+    nav .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+      position: relative;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul li ul {
       display: none;
       position: absolute;
-      top: 100%; left: 0;
+      top: 100%;
+      left: 0;
       background: rgba(0,0,0,0.9);
+      list-style: none;
       padding: 10px;
-      border-radius: 6px;
+      border-radius: 5px;
     }
-    nav ul ul li { margin: 5px 0; }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li {
+      margin: 10px 0;
+    }
 
-    /* LAYOUT BLOG */
+    /* Layout */
     .container {
       display: flex;
-      max-width: 1200px;
-      margin: 20px auto;
-      gap: 20px;
+      width: 90%;
+      margin: 30px auto;
     }
     .posts {
       flex: 3;
-      background: rgba(0,0,0,0.6);
+      margin-right: 20px;
+      background: rgba(0,0,0,0.7);
       padding: 20px;
-      border-radius: 8px;
+      border-radius: 10px;
     }
+    .sidebar {
+      flex: 1;
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* Posts estilo matéria */
     .post {
-      margin-bottom: 20px;
-      border-bottom: 1px solid #444;
-      padding-bottom: 15px;
+      margin-bottom: 40px;
     }
     .post img {
       width: 100%;
+      max-height: 400px;
+      object-fit: cover;
       border-radius: 6px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
-    .post h2 { margin-bottom: 10px; }
-    .sidebar {
-      flex: 1;
-      background: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 8px;
+    .post h2 {
+      margin-bottom: 15px;
+      font-size: 1.8em;
+      color: #ff3c00;
     }
-    .sidebar h3 { margin-bottom: 10px; }
-    .sidebar ul { list-style: none; }
-    .sidebar li { margin: 8px 0; }
-
-    /* RODAPÉ */
-    footer {
-      background: rgba(0,0,0,0.8);
-      text-align: center;
-      padding: 20px;
-      margin-top: 20px;
+    .post p {
+      margin-bottom: 15px;
+      text-align: justify;
     }
-    footer h3 { margin-bottom: 15px; }
-    .noticias {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .noticia {
-      width: 250px;
-      background: rgba(255,255,255,0.1);
-      padding: 10px;
-      border-radius: 6px;
-    }
-    .noticia img {
-      width: 100%;
-      border-radius: 6px;
-      margin-bottom: 10px;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-content {
-      background: #111;
-      padding: 20px;
-      border-radius: 8px;
-      width: 300px;
-      text-align: center;
-    }
-    .modal-content input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 6px;
-    }
-    .modal-content button {
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
+    .post .btn {
+      display: inline-block;
       background: #ff3c00;
       color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
+      transition: 0.3s;
+    }
+    .post .btn:hover {
+      background: #ff5722;
+    }
+
+    /* Sidebar */
+    .sidebar h3 {
+      margin-bottom: 15px;
+      font-size: 1.4em;
+      border-bottom: 2px solid #ff3c00;
+      padding-bottom: 5px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin-bottom: 10px;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .sidebar ul li a:hover {
+      color: #ff3c00;
+    }
+
+    /* Footer Noticias */
+    footer {
+      background: rgba(0,0,0,0.9);
+      padding: 30px;
+      margin-top: 40px;
+    }
+    footer h2 {
+      margin-bottom: 20px;
+      color: #ff3c00;
+    }
+    .news {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .news article {
+      background: rgba(255,255,255,0.05);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    .news article h4 {
+      margin-bottom: 10px;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-  <!-- SLIDESHOW -->
+  <!-- Background Slideshow -->
   <div class="slideshow">
-    <img src="https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808" class="active">
-    <img src="https://www.cyberpunk.net/build/images/home12/cover-1920-bd460362.jpg">
-    <img src="https://images6.alphacoders.com/909/909641.jpg">
-    <img src="https://images2.alphacoders.com/128/1288050.jpg">
+    <img src="https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808" alt="Spider-Man">
+    <img src="https://www.cyberpunk.net/build/images/home12/cover-1920-bd460362.jpg" alt="Cyberpunk">
+    <img src="https://images6.alphacoders.com/133/1330164.jpeg" alt="GTA V">
+    <img src="https://images5.alphacoders.com/131/1318659.jpeg" alt="Skyrim">
   </div>
 
-  <!-- NAVBAR -->
+  <!-- Navbar -->
   <nav>
-    <div class="logo">🎮 Game-Eaters</div>
+    <div class="logo">Game-Eaters</div>
     <ul>
-      <li><a href="#">Início</a></li>
-      <li><a href="#">Games</a>
-        <ul>
-          <li><a href="#">Ação</a></li>
-          <li><a href="#">Aventura</a></li>
-          <li><a href="#">RPG</a></li>
-          <li><a href="#">Tiro</a></li>
-          <li><a href="#">Corrida</a></li>
-          <li><a href="#">Estratégia</a></li>
-          <li><a href="#">Terror</a></li>
-          <li><a href="#">Indie</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Mods</a>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Sobre</a></li>
+      <li>
+        <a href="#">Mods</a>
         <ul>
           <li><a href="#">GTA V</a></li>
+          <li><a href="#">Cyberpunk</a></li>
           <li><a href="#">Skyrim</a></li>
-          <li><a href="#">Minecraft</a></li>
-          <li><a href="#">Cyberpunk 2077</a></li>
+          <li><a href="#">Assassin’s Creed</a></li>
         </ul>
       </li>
-      <li><a href="#" onclick="openModal()">Registrar</a></li>
+      <li><a href="#">Contato</a></li>
     </ul>
   </nav>
 
-  <!-- CONTEÚDO -->
+  <!-- Main -->
   <div class="container">
-    <!-- POSTS -->
+    <!-- Posts -->
     <div class="posts">
       <div class="post">
-        <img src="https://images6.alphacoders.com/133/1330164.jpeg" alt="Post 1">
-        <h2>Novo Mod de GTA V</h2>
-        <p>Um mod incrível adiciona gráficos realistas e ray tracing no GTA V. Confira como instalar!</p>
+        <img src="https://images6.alphacoders.com/133/1330164.jpeg" alt="Post GTA V">
+        <h2>GTA V ganha mod gráfico impressionante com Ray Tracing</h2>
+        <p>O mundo de Los Santos acaba de ganhar uma nova vida com o lançamento de um mod que 
+        adiciona iluminação global em tempo real, reflexos detalhados e texturas em altíssima resolução.</p>
+        <p>Jogadores relatam que a performance permanece estável e a cidade parece mais realista do que nunca. 
+        A combinação de novos shaders e pacotes de texturas cria cenários dignos da nova geração de consoles.</p>
+        <a href="#" class="btn">Ler mais</a>
       </div>
+
       <div class="post">
-        <img src="https://images2.alphacoders.com/131/1315649.jpeg" alt="Post 2">
-        <h2>Cyberpunk com visual renovado</h2>
-        <p>Mods que transformam a cidade em algo ainda mais imersivo. Veja detalhes!</p>
+        <img src="https://images2.alphacoders.com/131/1315649.jpeg" alt="Post Cyberpunk">
+        <h2>Cyberpunk 2077 recebe pacote de mods que redefine Night City</h2>
+        <p>Após anos de atualizações oficiais, os modders continuam reinventando Cyberpunk 2077. 
+        Um dos pacotes mais populares traz novos NPCs, veículos customizados e até missões inéditas.</p>
+        <p>Night City ganha atmosfera ainda mais imersiva com iluminação reconfigurada e clima dinâmico. 
+        Para os fãs que buscam uma experiência diferenciada, esse mod é praticamente obrigatório.</p>
+        <a href="#" class="btn">Ler mais</a>
+      </div>
+
+      <div class="post">
+        <img src="https://images5.alphacoders.com/131/1318659.jpeg" alt="Post Assassin's Creed">
+        <h2>Assassin's Creed Mirage recebe novo trailer com gameplay estendido</h2>
+        <p>A Ubisoft divulgou um trailer estendido de Assassin's Creed Mirage, mostrando mais detalhes sobre a jogabilidade, 
+        ambientação e sistema de parkour inspirado nos clássicos da franquia.</p>
+        <p>O título promete resgatar a essência do primeiro Assassin's Creed, focando na furtividade, 
+        exploração urbana e narrativa imersiva.</p>
+        <a href="#" class="btn">Ler mais</a>
       </div>
     </div>
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
+    <!-- Sidebar -->
+    <aside class="sidebar">
       <h3>Categorias</h3>
       <ul>
-        <li>Ação</li>
-        <li>Aventura</li>
-        <li>RPG</li>
-        <li>Tiro</li>
-        <li>Mods</li>
-        <li>Notícias</li>
+        <li><a href="#">Ação</a></li>
+        <li><a href="#">Aventura</a></li>
+        <li><a href="#">Tiro</a></li>
+        <li><a href="#">RPG</a></li>
+        <li><a href="#">Corrida</a></li>
+        <li><a href="#">Terror</a></li>
+        <li><a href="#">Esportes</a></li>
+        <li><a href="#">Indie</a></li>
       </ul>
-    </div>
+    </aside>
   </div>
 
-  <!-- RODAPÉ -->
+  <!-- Footer -->
   <footer>
-    <h3>📰 Notícias Gamer</h3>
-    <div class="noticias">
-      <div class="noticia">
-        <img src="https://images5.alphacoders.com/131/1318659.jpeg" alt="">
-        <p>Assassin's Creed Mirage ganha novo trailer.</p>
-      </div>
-      <div class="noticia">
-        <img src="https://images6.alphacoders.com/133/1330544.jpeg" alt="">
-        <p>Minecraft recebe expansão oficial com novos biomas.</p>
-      </div>
-      <div class="noticia">
-        <img src="https://images2.alphacoders.com/128/1288050.jpg" alt="">
-        <p>Cyberpunk 2077: update traz melhorias gráficas.</p>
-      </div>
+    <h2>Notícias Gamer</h2>
+    <div class="news">
+      <article>
+        <h4>GTA VI pode ser revelado em breve</h4>
+        <p>Rumores apontam que a Rockstar está preparando um trailer oficial ainda este ano.</p>
+      </article>
+      <article>
+        <h4>Cyberpunk 2077 expande história</h4>
+        <p>Novo DLC promete trazer mais missões para os fãs de Night City.</p>
+      </article>
+      <article>
+        <h4>Assassin’s Creed Mirage</h4>
+        <p>Ubisoft promete retorno às origens da franquia com foco em furtividade.</p>
+      </article>
     </div>
   </footer>
-
-  <!-- MODAL -->
-  <div class="modal" id="registerModal">
-    <div class="modal-content">
-      <h2>Registrar</h2>
-      <input type="text" placeholder="Usuário">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Senha">
-      <button>Registrar</button>
-    </div>
-  </div>
-
-  <script>
-    // SLIDESHOW
-    let slides = document.querySelectorAll(".slideshow img");
-    let currentSlide = 0;
-    setInterval(() => {
-      slides[currentSlide].classList.remove("active");
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
-    }, 5000);
-
-    // MODAL
-    function openModal() {
-      document.getElementById("registerModal").style.display = "flex";
-    }
-    window.onclick = function(event) {
-      let modal = document.getElementById("registerModal");
-      if (event.target == modal) modal.style.display = "none";
-    }
-  </script>
 </body>
 </html>
