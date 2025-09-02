@@ -67,9 +67,7 @@ border-color:var(--primary);
 .container{width:90%;max-width:1200px;margin:0 auto;}
 .grid{display:grid;gap:1.5rem;}
 .grid-2{grid-template-columns:repeat(2,1fr);}
-.grid-3{grid-template-columns:repeat(3,1fr);}
 .flex{display:flex;gap:1rem;align-items:center;}
-.hidden{display:none;}
 .text-primary{color:var(--primary);}
 .text-secondary{color:var(--secondary);}
 .text-gray-400{color:#9ca3af;}
@@ -99,16 +97,26 @@ color:var(--primary);
 text-decoration:none;
 }
 #news-carousel a:hover{color:var(--secondary);}
+
+/* Dropdown apenas no MODS */
+.dropdown{
+position:relative;
+}
 .dropdown-menu{
 display:none;
 position:absolute;
+top:100%; /* logo abaixo do link */
+left:0;
 background:rgba(0,0,0,0.9);
 padding:1rem;
 border-radius:0.5rem;
-margin-top:0.5rem;
+flex-direction:column;
+min-width:150px;
 z-index:100;
 }
-.dropdown:hover .dropdown-menu{display:block;}
+.dropdown:hover .dropdown-menu{
+display:flex;
+}
 </style>
 </head>
 <body>
@@ -119,19 +127,14 @@ z-index:100;
 <a href="#" class="text-2xl font-bold pixel-font"><i class="fas fa-gamepad"></i> <span class="text-primary">GAME</span><span class="text-secondary">EATERS</span></a>
 </div>
 <div class="flex items-center">
+<a href="#">Games</a>
 <div class="dropdown">
-<a href="#">Categorias <i class="fas fa-caret-down"></i></a>
-<div class="dropdown-menu flex flex-col">
-<a href="#">Games &gt; Ação</a>
-<a href="#">Games &gt; Aventura</a>
-<a href="#">Games &gt; Tiro</a>
-<a href="#">Games &gt; RPG</a>
-<a href="#">Games &gt; Indie</a>
-<a href="#">Games &gt; Estratégia</a>
-<a href="#">Games &gt; Esportes</a>
-<a href="#">Games &gt; Corrida</a>
-<hr class="my-2 border-gray-600">
-<a href="#">Mods</a>
+<a href="#">MODS <i class="fas fa-caret-down"></i></a>
+<div class="dropdown-menu">
+<a href="#">GTA V</a>
+<a href="#">Skyrim</a>
+<a href="#">Minecraft</a>
+<a href="#">Cyberpunk 2077</a>
 </div>
 </div>
 <button class="btn-primary" onclick="openRegister()"><i class="fas fa-sign-in-alt"></i> LOGIN</button>
@@ -144,66 +147,42 @@ z-index:100;
 <p id="news-carousel" class="text-xl md:text-2xl max-w-2xl mx-auto mb-10">Carregando notícias...</p>
 </section>
 
-<!-- Features -->
-<section class="py-20">
-<div class="container">
-<h2 class="text-4xl font-bold text-center mb-16 pixel-font">RECURSOS PRINCIPAIS</h2>
-<div class="grid grid-3">
-<div class="card text-center">
-<i class="fas fa-bolt text-primary text-4xl mb-4"></i>
-<h3 class="text-2xl font-bold mb-3">CARREGAMENTO RÁPIDO</h3>
-<p class="text-gray-400">Nova arquitetura que torna o site até 3x mais rápido que a versão anterior.</p>
-</div>
-<div class="card text-center">
-<i class="fas fa-gamepad text-primary text-4xl mb-4"></i>
-<h3 class="text-2xl font-bold mb-3">INTERFACE GAMER</h3>
-<p class="text-gray-400">Design inspirado em consoles modernos com efeitos visuais impressionantes.</p>
-</div>
-<div class="card text-center">
-<i class="fas fa-mobile-alt text-primary text-4xl mb-4"></i>
-<h3 class="text-2xl font-bold mb-3">RESPONSIVO</h3>
-<p class="text-gray-400">Totalmente adaptado para mobile com controles otimizados para touch.</p>
-</div>
-</div>
-</div>
-</section>
-
 <!-- Mod Showcase -->
 <section class="py-20 bg-black bg-opacity-50">
 <div class="container">
 <h2 class="text-4xl font-bold mb-6 pixel-font text-center">MODS EM DESTAQUE</h2>
 <div class="grid grid-2">
 
+<!-- Spider-Man Mod -->
+<div class="card p-4 rounded-lg">
+<img src="https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808" class="w-full h-40 object-cover rounded mb-3" alt="Spider-Man Mod">
+<h4 class="font-bold text-lg">Spider-Man Remastered</h4>
+<p class="text-gray-400 text-sm">Capturas incríveis do herói em Nova York.</p>
+<a href="#" class="text-primary text-sm">Ver Mod</a>
+</div>
+
 <!-- GTA V Mod -->
 <div class="card p-4 rounded-lg">
 <img src="https://cdn.gta5-mods.com/images/mods/1227/nve_screenshot.jpg" class="w-full h-40 object-cover rounded mb-3" alt="GTA V Mod">
 <h4 class="font-bold text-lg">GTA V – NaturalVision</h4>
-<p class="text-gray-400 text-sm">Capturas realistas e texturas em alta qualidade.</p>
+<p class="text-gray-400 text-sm">Texturas realistas e gráficos incríveis.</p>
 <a href="https://www.gta5-mods.com/misc/naturalvision-remastered" target="_blank" class="text-primary text-sm">Ver Mod</a>
+</div>
+
+<!-- Cyberpunk 2077 Mod -->
+<div class="card p-4 rounded-lg">
+<img src="https://staticdelivery.nexusmods.com/mods/14056/1/0/cyberpunk-bg.jpg" class="w-full h-40 object-cover rounded mb-3" alt="Cyberpunk Mod">
+<h4 class="font-bold text-lg">Cyberpunk 2077 – Photo BG</h4>
+<p class="text-gray-400 text-sm">Screenshots cinematográficas em Night City.</p>
+<a href="https://www.nexusmods.com/cyberpunk2077/mods/14056" target="_blank" class="text-primary text-sm">Ver Mod</a>
 </div>
 
 <!-- Skyrim Mod -->
 <div class="card p-4 rounded-lg">
 <img src="https://staticdelivery.nexusmods.com/mods/45594/1/0/SkyrimHD.jpg" class="w-full h-40 object-cover rounded mb-3" alt="Skyrim Mod">
 <h4 class="font-bold text-lg">Skyrim – HD Pack</h4>
-<p class="text-gray-400 text-sm">Pacote de screenshots e texturas cinematográficas.</p>
+<p class="text-gray-400 text-sm">Pacote de texturas e screenshots de alta qualidade.</p>
 <a href="https://www.nexusmods.com/skyrim/mods/45594" target="_blank" class="text-primary text-sm">Ver Mod</a>
-</div>
-
-<!-- Minecraft Mod -->
-<div class="card p-4 rounded-lg">
-<img src="https://media.forgecdn.net/attachments/287/303/custom-background.jpg" class="w-full h-40 object-cover rounded mb-3" alt="Minecraft Mod">
-<h4 class="font-bold text-lg">Minecraft – Custom BG HD</h4>
-<p class="text-gray-400 text-sm">Visual personalizável para screenshots e menus.</p>
-<a href="https://www.curseforge.com/minecraft/texture-packs/custom-background-hd" target="_blank" class="text-primary text-sm">Ver Mod</a>
-</div>
-
-<!-- Cyberpunk Mod -->
-<div class="card p-4 rounded-lg">
-<img src="https://staticdelivery.nexusmods.com/mods/14056/1/0/cyberpunk-bg.jpg" class="w-full h-40 object-cover rounded mb-3" alt="Cyberpunk Mod">
-<h4 class="font-bold text-lg">Cyberpunk 2077 – Photo BG</h4>
-<p class="text-gray-400 text-sm">Modo foto desbloqueado com fundos do Japão.</p>
-<a href="https://www.nexusmods.com/cyberpunk2077/mods/14056" target="_blank" class="text-primary text-sm">Ver Mod</a>
 </div>
 
 </div>
@@ -243,10 +222,10 @@ Este site visa ajudar toda a comunidade com dicas de games, mods e novidades do 
 <script>
 // Background slider
 const backgrounds=[
+'https://cdn1.epicgames.com/offer/4bc43145bb8245a5b5cc9ea262ffbe0e/EGS_MarvelsSpiderManRemastered_InsomniacGamesNixxesSoftware_S1_2560x1440-73702d11161b29a0b7c40a8b489b1808',
 'https://cdn.gta5-mods.com/images/mods/1227/nve_screenshot.jpg',
-'https://staticdelivery.nexusmods.com/mods/45594/1/0/SkyrimHD.jpg',
-'https://media.forgecdn.net/attachments/287/303/custom-background.jpg',
-'https://staticdelivery.nexusmods.com/mods/14056/1/0/cyberpunk-bg.jpg'
+'https://staticdelivery.nexusmods.com/mods/14056/1/0/cyberpunk-bg.jpg',
+'https://staticdelivery.nexusmods.com/mods/45594/1/0/SkyrimHD.jpg'
 ];
 let bgIndex=0;
 setInterval(()=>{bgIndex=(bgIndex+1)%backgrounds.length;document.body.style.backgroundImage=`url(${backgrounds[bgIndex]})`;},8000);
